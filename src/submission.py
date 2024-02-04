@@ -60,10 +60,10 @@ def reduce_to_k_dim(M, k=2):
             - http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html
 
         Params:
-            M (numpy matrix of shape (number of unique words in the corpus , number of corpus words)): co-occurrence matrix of word counts
+            M (numpy matrix of shape (number of unique words in the corpus , number of unique words in the corpus)): co-occurrence matrix of word counts
             k (int): embedding size of each word after dimension reduction
         Return:
-            M_reduced (numpy matrix of shape (number of corpus words, k)): matrix of k-dimensioal word embeddings.
+            M_reduced (numpy matrix of shape (number of unique words in the corpus, k)): matrix of k-dimensioal word embeddings.
                     In terms of the SVD from math class, this actually returns U * S
     """
     np.random.seed(4355)
