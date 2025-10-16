@@ -64,8 +64,6 @@ def compute_co_occurrence_matrix(corpus, window_size=4):
         for word in range(0,len(doc)):
             window_range = doc[max(0,word-window_size):word+window_size+1]
             for window_word in window_range:
-                #row = words.index(doc[word])
-                #column = words.index(window_word)
                 row = word2Ind[doc[word]]
                 column = word2Ind[window_word]
                 if window_word != doc[word]:
