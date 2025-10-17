@@ -58,18 +58,18 @@ def compute_co_occurrence_matrix(corpus, window_size=4):
 
     # ### START CODE HERE ###
     word2Ind = {value: index for index, value in enumerate(words)}
-    M = np.zeros((num_words,num_words), dtype=int)
+    M = np.zeros((num_words,num_words))
 
-    for doc in corpus:
-        for word in range(0,len(doc)):
-            window_range = doc[max(0,word-window_size):word+window_size+1]
-            for window_word in window_range:
-                row = word2Ind[doc[word]]
-                column = word2Ind[window_word]
-                if window_word != doc[word]:
-                    M[row,column]+=1
-    #print(M)
-    #print(np.max(M))
+    for doc in corpus: 
+        for i, word in enumerate(doc):
+            window_start = max(0,i-window_size)
+            window_end = min(len(doc),i+window_size+1)
+            window_range = list(range(window_start,window_end))
+            window_range.remove(i)
+            for j in window_range:
+                row = word2Ind[word]
+                column = word2Ind[doc[j]]
+                M[row,column]+=1
    
 
     # ### END CODE HERE ###
